@@ -8,20 +8,11 @@ matrix:
     - name: "OSX Unit test"
       os: osx
       before_install:
-        export PATH="$(pwd)/build:${PATH}"
-        brew update
-        brew install ninja
-        brew install meson
-    - name: "Linux Unit test"
-      os: linux
-      dist: trusty
-      sudo: yes
-      before_install:
-        sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
-        export PATH="$(pwd)/build:${PATH}"
-        brew update
-        brew install ninja
-        brew install meson
+        - export PATH="$(pwd)/build:${PATH}"
+        - brew update
+        - brew install ninja
+        - brew install meson
+        
   
 # Build scripts
 # The same on all platforms
