@@ -21,8 +21,8 @@ before_install:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt install python3.7; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt install python3-pip; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then wget https://github.com/ninja-build/ninja/releases/download/v1.7.2/ninja-linux.zip && unzip -q ninja-linux.zip -d build; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then pip3 install --upgrade pip; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then pip3 install meson --user; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo pip3 install --upgrade pip; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo pip3 install meson --user; fi
 
 script:
   - meson builddir
