@@ -19,7 +19,7 @@ matrix:
       before_install:
         - export PATH="$(pwd)/build:${PATH}"
         - sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
-        - echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
+        - PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
         - brew update
         - brew install ninja
         - brew install meson
