@@ -44,6 +44,16 @@ matrix:
         - brew update
         - brew install ninja
         - brew install meson
+    - name: "Windows - CLANG"
+      os: windows
+      compiler: clang
+      before_install:
+        - export PATH="$(pwd)/build:${PATH}"
+        - sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+        - PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+        - brew update
+        - brew install ninja
+        - brew install meson
   
 # Build scripts
 # The same on all platforms
