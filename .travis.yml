@@ -18,6 +18,8 @@ before_install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pip3 install meson; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install python3; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then wget https://github.com/ninja-build/ninja/releases/download/v1.7.2/ninja-linux.zip && unzip -q ninja-linux.zip -d build; fi
+
+install:
   - pip3 install --upgrade pip
   - pip3 install meson --user
 
