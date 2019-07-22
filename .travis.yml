@@ -10,11 +10,16 @@ matrix:
 compiler:
   - gcc
 
+matrix:
+  include:
+    - python: 3.7
+      dist: xenial
+      sudo: true
+
 addons:
   apt:
     packages:
-      - "python3"
-      - "python3-pip"
+      - python3-pip
 
 install:
   - export PATH="$(pwd)/build:${PATH}"
