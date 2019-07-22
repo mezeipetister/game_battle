@@ -1,23 +1,49 @@
-language: python
-
-sudo: true
-
-python: 3.6
-
-os:
-  - linux
-  - osx
-  - windows
+language: c
   
-compiler:
-  - gcc
-  - clang
-
-before_install:
-  - pip3 install --upgrade pip
-  - pip3 install ninja
-  - pip3 install meson
-  
+matrix:
+  include:
+    - name: "OSX - GCC"
+      os: osx
+      compiler:
+        - gcc
+      before_install:
+        - export PATH="$(pwd)/build:${PATH}"
+        - brew update
+        - brew install ninja
+        - brew install meson
+    - name: "OSX - CLANG"
+      os: osx
+      compiler:
+        - clang
+      before_install:
+        - export PATH="$(pwd)/build:${PATH}"
+        - brew update
+        - brew install ninja
+        - brew install meson
+    - name: "Linux - GCC"
+      os: linux
+      dist: trusty
+      sudo: yes
+      compiler: gcc
+      before_install:
+        - export PATH="$(pwd)/build:${PATH}"
+        - sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+        - PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+        - brew update
+        - brew install ninja
+        - brew install meson
+    - name: "Linux - CLANG"
+      os: linux
+      dist: trusty
+      sudo: yes
+      compiler: clang
+      before_install:
+        - export PATH="$(pwd)/build:${PATH}"
+        - sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+        - PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+        - brew update
+        - brew install ninja
+        - brew install meson
 # Build scripts
 # The same on all platforms
 script:
