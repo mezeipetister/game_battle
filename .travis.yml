@@ -49,8 +49,11 @@ matrix:
       compiler: clang
       before_install:
         - choco install python3
+        - choco install wget
+        - wget https://bootstrap.pypa.io/get-pip.py
+        - python get-pip.py
         - choco install ninja
-        - pip3 install meson
+        - pip install meson
 
 # Build scripts
 # The same on all platforms
