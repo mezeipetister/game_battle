@@ -4,8 +4,7 @@ matrix:
   include:
     - name: "OSX - GCC"
       os: osx
-      compiler:
-        - gcc
+      compiler: gcc
       before_install:
         - export PATH="$(pwd)/build:${PATH}"
         - brew update
@@ -13,8 +12,7 @@ matrix:
         - brew install meson
     - name: "OSX - CLANG"
       os: osx
-      compiler:
-        - clang
+      compiler: clang
       before_install:
         - export PATH="$(pwd)/build:${PATH}"
         - brew update
@@ -50,8 +48,6 @@ matrix:
       before_install:
         - choco install python3
         - choco install wget
-        - wget https://bootstrap.pypa.io/get-pip.py
-        - python get-pip.py
         - choco install ninja
         - pip install meson
 
