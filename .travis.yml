@@ -1,12 +1,15 @@
-sudo: true
-dist: trusty
 language: c
 
 matrix:
   include:
     - os: linux
-    - dist: trusty
-    - python: 3.5
+      dist: trusty
+      sudo: true
+      python: 3.7
+    - os: osx
+      python: 3.7
+    - os: windows
+      python: 3.7
 
 compiler:
   - gcc
