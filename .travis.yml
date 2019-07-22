@@ -12,6 +12,17 @@ matrix:
         brew update
         brew install ninja
         pip3 install meson
+    - name: "Linux Unit test"
+      os: linux
+      dist: trusty
+      sudo: yes
+      python: 3.6
+      compiler:
+        gcc
+        clang
+      before_install:
+        wget https://github.com/ninja-build/ninja/releases/download/v1.7.2/ninja-linux.zip && unzip -q ninja-linux.zip -d build
+        pip3 install meson
   
 # before_install:
 #   - export PATH="$(pwd)/build:${PATH}"
