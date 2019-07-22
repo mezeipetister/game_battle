@@ -49,7 +49,11 @@ matrix:
       compiler: clang
       before_install:
         - export PATH="$(pwd)/build:${PATH}"
-        - mkdir homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C homebrew
+        - sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+        - echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
+        - test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
+        - test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+        - test -r ~/.bash_profile && echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.bash_profile
         - brew update
         - brew install ninja
         - brew install meson
