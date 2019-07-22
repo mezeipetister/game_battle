@@ -11,6 +11,8 @@ matrix:
       os: linux
       dist: trusty
       sudo: yes
+      before_install:
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
       
 before_install:
   - export PATH="$(pwd)/build:${PATH}"
