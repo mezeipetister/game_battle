@@ -1,13 +1,12 @@
 language: c
-
-compiler:
-  - gcc
-  - clang
   
 matrix:
   include:
     - name: "OSX Unit test"
       os: osx
+      compiler:
+        - gcc
+        - clang
       before_install:
         - export PATH="$(pwd)/build:${PATH}"
         - brew update
@@ -17,6 +16,9 @@ matrix:
       os: linux
       dist: trusty
       sudo: yes
+      compiler:
+        - gcc
+        - clang
       before_install:
         - export PATH="$(pwd)/build:${PATH}"
         - sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
