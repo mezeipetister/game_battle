@@ -1,11 +1,11 @@
 sudo: false
-
+dist: trusty
 language: c
 
 matrix:
   include:
     - os: linux
-      dist: trusty
+    - dist: trusty
 
 compiler:
   - gcc
