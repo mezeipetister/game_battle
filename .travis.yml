@@ -44,6 +44,14 @@ matrix:
         - brew update
         - brew install ninja
         - brew install meson
+    - name: "Windows - CLANG"
+      os: windows
+      compiler: clang
+      before_install:
+        - choco install python3
+        - choco install ninja
+        - pip3 install meson
+
 # Build scripts
 # The same on all platforms
 script:
