@@ -49,8 +49,7 @@ matrix:
       compiler: clang
       before_install:
         - export PATH="$(pwd)/build:${PATH}"
-        - sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
-        - PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+        - mkdir homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C homebrew
         - brew update
         - brew install ninja
         - brew install meson
