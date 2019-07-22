@@ -1,27 +1,18 @@
+sudo: false
 language: c
-sudo: true
+group: beta
 
 matrix:
   include:
     - os: linux
       dist: trusty
-      python: 3.7
-      compiler: gcc
     - os: osx
-      python: 3.7
-      compiler: gcc
-
-addons:
-  apt:
-    packages:
-      - python3-pip
-      - python3-setuptools
 
 install:
   - export PATH="$(pwd)/build:${PATH}"
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update && brew install python3 ninja; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then wget https://github.com/ninja-build/ninja/releases/download/v1.7.2/ninja-linux.zip && unzip -q ninja-linux.zip -d build; fi
-  - pip3 install --upgrade pip
-  - pip3 install meson --user
+  - pip3 install meson
 
 script:
   - meson builddir
