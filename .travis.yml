@@ -47,17 +47,12 @@ matrix:
     - name: "Windows - CLANG"
       os: windows
       compiler: clang
+      language: shell
+      python: 3.6
       before_install:
         - export PATH="$(pwd)/build:${PATH}"
-        - sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
-        - echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
-        - test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
-        - test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-        - test -r ~/.bash_profile && echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.bash_profile
-        - brew update
-        - brew install ninja
-        - brew install meson
-  
+        - pip3 install meson --user
+
 # Build scripts
 # The same on all platforms
 script:
