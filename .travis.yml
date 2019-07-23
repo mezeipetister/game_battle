@@ -52,11 +52,12 @@ matrix:
         - py -m pip install -U pip
         - choco install ninja
         - py -m pip install meson
+        - cmd.exe /c "call RefreshEnv.cmd"
         
 # Build scripts
 # The same on all platforms
 script:
-  - py -m meson builddir
+  - meson builddir
   - ninja -C builddir
   - ninja -C builddir test
   - ls builddir
