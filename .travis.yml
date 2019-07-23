@@ -48,7 +48,7 @@ matrix:
       before_install:
         - choco install python3
         - choco install ninja
-        - refreshenv
+        - call RefreshEnv.cmd
         - python -m pip install meson
         # - choco install miniconda3  --params="'/AddToPath:1'"
         # - setx path "%path%;c:\tools\miniconda3"
