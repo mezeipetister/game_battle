@@ -23,7 +23,7 @@ matrix:
       compiler: gcc
       cache:
         directories:
-          - Python37
+          - c:\Python37
     - name: "Windows - CLANG"
       os: windows
       compiler: clang
