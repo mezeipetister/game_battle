@@ -64,13 +64,14 @@ matrix:
         - choco install ninja
         - cmd.exe /c "call RefreshEnv.cmd"
         - git clone https://github.com/mesonbuild/meson
-    
         
 # Build scripts
 # The same on all platforms
-script:
+build_script:
   - if [ "$TRAVIS_OS_NAME" = "windows" ]; then py meson/meson.py builddir; fi
   - if [ "$TRAVIS_OS_NAME" != "windows" ]; then meson builddir; fi
-  - if [ "$TRAVIS_OS_NAME" != "windows" ]; then ninja -C builddir; fi
-  - if [ "$TRAVIS_OS_NAME" != "windows" ]; then ninja -C builddir test; fi
+  - ninja -C builddir; fi  
   - ls builddir
+
+test_script:
+  - ninja -C builddir test
