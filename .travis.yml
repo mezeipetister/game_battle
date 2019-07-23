@@ -46,11 +46,10 @@ matrix:
       os: windows
       compiler: clang
       before_install:
-        # - choco install python3
-        # - choco install ninja
-        # - call RefreshEnv.cmd
+        - choco install python3
+        - choco install ninja
         - cmd.exe /c "call RefreshEnv.cmd"
-        # - python -m pip install meson
+        - python -m pip install meson
         # - choco install miniconda3  --params="'/AddToPath:1'"
         # - setx path "%path%;c:\tools\miniconda3"
         # - setx path "%path%;c:\tools\miniconda3\Scripts"
