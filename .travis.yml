@@ -39,6 +39,7 @@ before_install:
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew install ninja; fi
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt install ninja-build -y; fi
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt install python3 -y; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then python3 -m pip install --user meson -y; fi
   # Download Meson both systems
   - git clone https://github.com/mesonbuild/meson
   
@@ -48,7 +49,7 @@ script:
   # Run meson
   - if [ "$TRAVIS_OS_NAME" == "windows" ]; then py meson/meson.py builddir; fi
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then ./meson/meson.py builddir; fi
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then python3 meson/meson.py builddir; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then meson builddir; fi
   # Run Ninja
   - ninja -C builddir
   - ls builddir
