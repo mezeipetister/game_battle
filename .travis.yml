@@ -48,7 +48,8 @@ matrix:
       before_install:
         - choco install python3
         - choco install ninja
-        - python -m pip install meson
+        - choco install anaconda3
+        - conda install meson
 
 # Build scripts
 # The same on all platforms
