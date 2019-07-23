@@ -51,7 +51,7 @@ matrix:
         # - python -m pip install meson
         - choco install miniconda3  --params="'/AddToPath:1'"
         - cmd.exe /c "call RefreshEnv.cmd"
-        - conda install meson
+        - python -V
 
 # Build scripts
 # The same on all platforms
