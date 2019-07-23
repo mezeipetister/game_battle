@@ -46,13 +46,15 @@ matrix:
       os: windows
       compiler: clang
       before_install:
-        # - choco install python3
-        # - choco install ninja
-        - choco install miniconda3  --params="'/AddToPath:1'"
-        - setx path "%path%;c:\tools\miniconda3"
-        - setx path "%path%;c:\tools\miniconda3\Scripts"
-        - conda install -c conda-forge ninja 
-        - conda install meson
+        - choco install python3
+        - choco install ninja
+        - refreshenv
+        - python -m pip install meson
+        # - choco install miniconda3  --params="'/AddToPath:1'"
+        # - setx path "%path%;c:\tools\miniconda3"
+        # - setx path "%path%;c:\tools\miniconda3\Scripts"
+        # - conda install -c conda-forge ninja 
+        # - conda install meson
 
 # Build scripts
 # The same on all platforms
