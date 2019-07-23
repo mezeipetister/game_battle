@@ -42,12 +42,12 @@ before_install:
 # Build scripts
 # The same on all platforms
 script:
+  # Run meson
   - if [ "$TRAVIS_OS_NAME" = "windows" ]; then py meson/meson.py builddir; fi
-  - if [ "$TRAVIS_OS_NAME" != "windows" ]; then ./meson/meson.py builddir; fi
-  - if [ "$TRAVIS_OS_NAME" = "windows" ]; then ninja/ninja.exe -C builddir; fi
-  - if [ "$TRAVIS_OS_NAME" != "windows" ]; then ./ninja/ninja -C builddir; fi
+  - if [ "$TRAVIS_OS_NAME" != "windows" ]; then python3 meson/meson.py builddir; fi
+  # Run Ninja
+  - ninja -C builddir
   - ls builddir
 
 test_script:
-  - if [ "$TRAVIS_OS_NAME" = "windows" ]; then ninja/ninja.exe -C builddir test; fi
-  - if [ "$TRAVIS_OS_NAME" != "windows" ]; then ./ninja/ninja -C builddir test; fi
+  - ninja -C builddir test
