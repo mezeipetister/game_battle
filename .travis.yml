@@ -11,23 +11,11 @@ matrix:
     - name: "Linux - GCC"
       os: linux
       dist: xenial
-      addons:
-        apt:
-          sources:
-            deadsnakes
-          packages:
-            python3.7-dev
       sudo: yes
       compiler: gcc
     - name: "Linux - CLANG"
       os: linux
       dist: xenial
-      addons:
-        apt:
-          sources:
-            deadsnakes
-          packages:
-            python3.7-dev
       sudo: yes
       compiler: clang
     - name: "Windows - GCC"
