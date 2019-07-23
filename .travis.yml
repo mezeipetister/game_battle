@@ -47,11 +47,11 @@ matrix:
       compiler: clang
       before_install:
         - choco install python3
-        # - choco install ninja
-        # - python -m pip install meson
+        - choco install ninja
+        - python3 -m pip install meson
         # - choco install miniconda3  --params="'/AddToPath:1'"
         - cmd.exe /c "call RefreshEnv.cmd"
-        - python -V
+        - python3 -V
 
 # Build scripts
 # The same on all platforms
