@@ -46,9 +46,10 @@ matrix:
       os: windows
       compiler: clang
       before_install:
-        - choco install python3
-        - choco install ninja
+        # - choco install python3
+        # - choco install ninja
         - choco install miniconda3  --params="'/AddToPath:1'"
+        - conda install -c conda-forge ninja 
         - conda install meson
 
 # Build scripts
