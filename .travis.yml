@@ -2,54 +2,53 @@ language: c
   
 matrix:
   include:
-    - name: "OSX - GCC"
-      os: osx
-      compiler: gcc
-      before_install:
-        - export PATH="$(pwd)/build:${PATH}"
-        - brew update
-        - brew install ninja
-        - brew install meson
-    - name: "OSX - CLANG"
-      os: osx
-      compiler: clang
-      before_install:
-        - export PATH="$(pwd)/build:${PATH}"
-        - brew update
-        - brew install ninja
-        - brew install meson
-    - name: "Linux - GCC"
-      os: linux
-      dist: trusty
-      sudo: yes
-      compiler: gcc
-      before_install:
-        - export PATH="$(pwd)/build:${PATH}"
-        - sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
-        - PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
-        - brew update
-        - brew install ninja
-        - brew install meson
-    - name: "Linux - CLANG"
-      os: linux
-      dist: trusty
-      sudo: yes
-      compiler: clang
-      before_install:
-        - export PATH="$(pwd)/build:${PATH}"
-        - sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
-        - PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
-        - brew update
-        - brew install ninja
-        - brew install meson
+    # - name: "OSX - GCC"
+    #   os: osx
+    #   compiler: gcc
+    #   before_install:
+    #     - export PATH="$(pwd)/build:${PATH}"
+    #     - brew update
+    #     - brew install ninja
+    #     - brew install meson
+    # - name: "OSX - CLANG"
+    #   os: osx
+    #   compiler: clang
+    #   before_install:
+    #     - export PATH="$(pwd)/build:${PATH}"
+    #     - brew update
+    #     - brew install ninja
+    #     - brew install meson
+    # - name: "Linux - GCC"
+    #   os: linux
+    #   dist: trusty
+    #   sudo: yes
+    #   compiler: gcc
+    #   before_install:
+    #     - sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+    #     - export PATH="$(pwd)/build:${PATH}"
+    #     - PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+    #     - brew update
+    #     - brew install ninja
+    #     - brew install meson
+    # - name: "Linux - CLANG"
+    #   os: linux
+    #   dist: trusty
+    #   sudo: yes
+    #   compiler: clang
+    #   before_install:
+    #     - export PATH="$(pwd)/build:${PATH}"
+    #     - sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+    #     - PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+    #     - brew update
+    #     - brew install ninja
+    #     - brew install meson
     - name: "Windows - CLANG"
       os: windows
       compiler: clang
       before_install:
         - choco install python3
-        - choco install wget
         - choco install ninja
-        - pip install meson
+        - python -m pip install meson
 
 # Build scripts
 # The same on all platforms
