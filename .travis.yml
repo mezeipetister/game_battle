@@ -38,7 +38,7 @@ before_install:
   - if [ "$TRAVIS_OS_NAME" == "windows" ]; then choco install ninja; fi
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew install ninja; fi
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt install ninja-build -y; fi
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt install python3.6 -y; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt install python3 -y; fi
   # Download Meson both systems
   - git clone https://github.com/mesonbuild/meson
   
