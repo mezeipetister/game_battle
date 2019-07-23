@@ -51,14 +51,13 @@ matrix:
         - py -V
         - py -m pip install -U pip
         - choco install ninja
-        - py -m pip install --user meson
-        - setx path "%path%;c:\Python37;c:\Python37\Scripts"
         - cmd.exe /c "call RefreshEnv.cmd"
+        - git clone https://github.com/mesonbuild/meson
         
 # Build scripts
 # The same on all platforms
 script:
-  - meson builddir
+  - py meson/meson.py builddir
   - ninja -C builddir
   - ninja -C builddir test
   - ls builddir
