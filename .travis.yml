@@ -42,6 +42,17 @@ matrix:
         - brew update
         - brew install ninja
         - brew install meson
+    - name: "Windows - GCC"
+      os: windows
+      compiler: gcc
+      before_install:
+        - choco install -y python
+        - cmd.exe /c "call RefreshEnv.cmd"
+        - py -V
+        - py -m pip install -U pip
+        - choco install ninja
+        - cmd.exe /c "call RefreshEnv.cmd"
+        - git clone https://github.com/mesonbuild/meson
     - name: "Windows - CLANG"
       os: windows
       compiler: clang
@@ -53,12 +64,13 @@ matrix:
         - choco install ninja
         - cmd.exe /c "call RefreshEnv.cmd"
         - git clone https://github.com/mesonbuild/meson
+    
         
 # Build scripts
 # The same on all platforms
 script:
   - if [ "$TRAVIS_OS_NAME" = "windows" ]; then py meson/meson.py builddir; fi
-  - meson builddir
-  - ninja -C builddir
-  - ninja -C builddir test
+  - if [ "$TRAVIS_OS_NAME" != "windows" ]; then meson builddir; fi
+  - if [ "$TRAVIS_OS_NAME" != "windows" ]; then ninja -C builddir; fi
+  - if [ "$TRAVIS_OS_NAME" != "windows" ]; then ninja -C builddir test; fi
   - ls builddir
