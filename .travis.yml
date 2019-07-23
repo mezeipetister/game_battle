@@ -47,10 +47,11 @@ matrix:
       compiler: clang
       before_install:
         - choco install -y python
-        - C:\Python37\python -V
-        - C:\Python37python -m pip install -U pip
+        - cmd.exe /c "call RefreshEnv.cmd"
+        - py -V
+        - py -m pip install -U pip
         - choco install ninja
-        - C:\Python37\python -m pip install meson
+        - py -m pip install meson
         
 # Build scripts
 # The same on all platforms
