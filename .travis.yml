@@ -27,15 +27,15 @@ matrix:
 
 before_install:
   # Install Python on Windows
-  - if [ "$TRAVIS_OS_NAME" = "windows" ]; then choco install -y python; fi
-  - if [ "$TRAVIS_OS_NAME" = "windows" ]; then cmd.exe /c "call RefreshEnv.cmd"; fi
+  - if [ "$TRAVIS_OS_NAME" == "windows" ]; then choco install -y python; fi
+  - if [ "$TRAVIS_OS_NAME" == "windows" ]; then cmd.exe /c "call RefreshEnv.cmd"; fi
   # Export PATH on OSX and Linux
   # TODO: Do we need this part?
   - if [ "$TRAVIS_OS_NAME" != "windows" ]; then export PATH="$(pwd)/build:${PATH}"; fi
   # Install Ninja
-  - if [ "$TRAVIS_OS_NAME" = "windows" ]; then choco install ninja; fi
-  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew install ninja; fi
-  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then sudo apt install ninja-build -y; fi
+  - if [ "$TRAVIS_OS_NAME" == "windows" ]; then choco install ninja; fi
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew install ninja; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt install ninja-build -y; fi
   # Download Meson both systems
   - git clone https://github.com/mesonbuild/meson
   
@@ -43,8 +43,8 @@ before_install:
 # The same on all platforms
 script:
   # Run meson
-  - if [ "$TRAVIS_OS_NAME" = "windows" ]; then py meson/meson.py builddir; fi
-  - if [ "$TRAVIS_OS_NAME" != "windows" ]; then python3 meson/meson.py builddir; fi
+  - if [ "$TRAVIS_OS_NAME" == "windows" ]; then py meson/meson.py builddir; fi
+  - if [ "$TRAVIS_OS_NAME" != "windows" ]; then py meson/meson.py builddir; fi
   # Run Ninja
   - ninja -C builddir
   - ls builddir
