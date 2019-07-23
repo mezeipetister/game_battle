@@ -7,7 +7,13 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include <unistd.h>
+
+#ifdef _WIN32
+	#include <windows.h>
+#else
+	#include <unistd.h>
+#endif
+
 //
 #define CLEAR_SCREEN "\e[1;1H\e[2J"
 #define CLEAR_EOL    "\x1B[K"
@@ -21,6 +27,22 @@ typedef struct {
   int x;
   int y;
 } Character;
+
+void sleep_sec(int time) {
+  #ifdef _WIN32
+  Sleep(time);
+	#else
+  sleep(time);
+	#endif
+}
+
+void sleep_millisec(int time) {
+  #ifdef _WIN32
+  Sleep(time / 1000);
+	#else
+  usleep(time * 1000);
+	#endif
+}
 
 // Get random number
 int get_random() {
@@ -111,7 +133,7 @@ int main() {
       system("clear");
       printf(MOVE_CURSOR, panda->x, panda->y);
       printf("🔥\n");
-      sleep(3);
+      sleep_sec(3);
       break;
     }
 
@@ -120,7 +142,7 @@ int main() {
     set_new_position(panda);
     
     // Sleep in ms;
-    usleep(500 * 1000);
+    sleep_millisec(500);
   }
 
   // Clear screen
