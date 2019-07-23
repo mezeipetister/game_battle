@@ -56,7 +56,7 @@ matrix:
 # Build scripts
 # The same on all platforms
 script:
-  - meson builddir
+  - py -m meson builddir
   - ninja -C builddir
   - ninja -C builddir test
   - ls builddir
