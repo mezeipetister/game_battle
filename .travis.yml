@@ -42,11 +42,13 @@ matrix:
         - brew update
         - brew install ninja
         - brew install meson
-    # - name: "Windows - CLANG"
-    #   os: windows
-    #   compiler: clang
-    #   before_install:
-        # - choco install python
+    - name: "Windows - CLANG"
+      os: windows
+      compiler: clang
+      before_install:
+        - choco install -y python
+        - cmd.exe /c "call RefreshEnv.cmd"
+        - python -V
         # - python -m pip install -U pip
         # - choco install ninja
         # - python -m pip install meson
