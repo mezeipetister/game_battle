@@ -46,12 +46,13 @@ matrix:
       os: windows
       compiler: clang
       before_install:
-        - choco install python3
-        - choco install ninja
-        - python3 -m pip install meson
+        - choco install python
+        - python -m pip install -U pip
+        # - choco install ninja
+        # - python3 -m pip install meson
         # - choco install miniconda3  --params="'/AddToPath:1'"
-        - cmd.exe /c "call RefreshEnv.cmd"
-        - python3 -V
+        # - cmd.exe /c "call RefreshEnv.cmd"
+        - python -V
 
 # Build scripts
 # The same on all platforms
