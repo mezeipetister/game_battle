@@ -11,11 +11,13 @@ matrix:
     - name: "Linux - GCC"
       os: linux
       dist: trusty
+      python: 3.7
       sudo: yes
       compiler: gcc
     - name: "Linux - CLANG"
       os: linux
       dist: trusty
+      python: 3.7
       sudo: yes
       compiler: clang
     - name: "Windows - GCC"
@@ -35,7 +37,7 @@ before_install:
   # Install Ninja
   - if [ "$TRAVIS_OS_NAME" == "windows" ]; then choco install ninja; fi
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew install ninja; fi
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt install ninja-build -y; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt install python3 python3-pip python3-setuptools python3-wheel ninja-build -y && pip3 install --user meson; fi
   # Download Meson both systems
   - git clone https://github.com/mesonbuild/meson
   
@@ -44,7 +46,8 @@ before_install:
 script:
   # Run meson
   - if [ "$TRAVIS_OS_NAME" == "windows" ]; then py meson/meson.py builddir; fi
-  - if [ "$TRAVIS_OS_NAME" != "windows" ]; then ./meson/meson.py builddir; fi
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then ./meson/meson.py builddir; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then meson builddir; fi
   # Run Ninja
   - ninja -C builddir
   - ls builddir
