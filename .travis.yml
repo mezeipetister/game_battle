@@ -2,30 +2,30 @@ language: c
   
 matrix:
   include:
-    - name: "OSX - GCC"
-      os: osx
-      compiler: gcc
-    - name: "OSX - CLANG"
-      os: osx
-      compiler: clang
-    - name: "Linux - GCC"
-      os: linux
-      dist: trusty
-      python: 3.7
-      sudo: yes
-      compiler: gcc
+    # - name: "OSX - GCC"
+    #   os: osx
+    #   compiler: gcc
+    # - name: "OSX - CLANG"
+    #   os: osx
+    #   compiler: clang
+    # - name: "Linux - GCC"
+    #   os: linux
+    #   dist: trusty
+    #   python: 3.7
+    #   sudo: yes
+    #   compiler: gcc
     - name: "Linux - CLANG"
       os: linux
       dist: trusty
       python: 3.7
       sudo: yes
       compiler: clang
-    - name: "Windows - GCC"
-      os: windows
-      compiler: gcc
-    - name: "Windows - CLANG"
-      os: windows
-      compiler: clang
+    # - name: "Windows - GCC"
+    #   os: windows
+    #   compiler: gcc
+    # - name: "Windows - CLANG"
+    #   os: windows
+    #   compiler: clang
 
 before_install:
   # Install Python on Windows
