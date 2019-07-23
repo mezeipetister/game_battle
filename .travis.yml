@@ -44,7 +44,7 @@ before_install:
 script:
   # Run meson
   - if [ "$TRAVIS_OS_NAME" == "windows" ]; then py meson/meson.py builddir; fi
-  - if [ "$TRAVIS_OS_NAME" != "windows" ]; then py meson/meson.py builddir; fi
+  - if [ "$TRAVIS_OS_NAME" != "windows" ]; then ./meson/meson.py builddir; fi
   # Run Ninja
   - ninja -C builddir
   - ls builddir
