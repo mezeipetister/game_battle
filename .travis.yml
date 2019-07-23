@@ -67,7 +67,7 @@ matrix:
         
 # Build scripts
 # The same on all platforms
-build_script:
+script:
   - if [ "$TRAVIS_OS_NAME" = "windows" ]; then py meson/meson.py builddir; fi
   - if [ "$TRAVIS_OS_NAME" != "windows" ]; then meson builddir; fi
   - ninja -C builddir; fi  
