@@ -47,7 +47,7 @@ matrix:
       compiler: clang
       before_install:
         - choco install python
-        - python -m pip install -U pip
+        # - python -m pip install -U pip
         # - choco install ninja
         # - python3 -m pip install meson
         # - choco install miniconda3  --params="'/AddToPath:1'"
