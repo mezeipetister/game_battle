@@ -60,7 +60,5 @@ script:
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then python3 meson/meson.py builddir; fi
   # Run Ninja
   - ninja -C builddir
-  - ls builddir
-
-test_script:
   - ninja -C builddir test
+  - ls builddir
