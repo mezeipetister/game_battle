@@ -21,9 +21,6 @@ matrix:
     - name: "Windows - GCC"
       os: windows
       compiler: gcc
-      cache:
-        directories:
-          - c:\Python37
     - name: "Windows - CLANG"
       os: windows
       compiler: clang
