@@ -11,23 +11,11 @@ matrix:
     - name: "Linux - GCC"
       os: linux
       dist: xenial
-      addons:
-        apt:
-          sources:
-            deadsnakes
-          packages:
-            python3.7-dev
       sudo: yes
       compiler: gcc
     - name: "Linux - CLANG"
       os: linux
       dist: xenial
-      addons:
-        apt:
-          sources:
-            deadsnakes
-          packages:
-            python3.7-dev
       sudo: yes
       compiler: clang
     - name: "Windows - GCC"
@@ -36,31 +24,8 @@ matrix:
     - name: "Windows - CLANG"
       os: windows
       compiler: clang
-
-before_install:
-  # Install Python on Windows
-  - if [ "$TRAVIS_OS_NAME" == "windows" ]; then choco install -y python; fi
-  - if [ "$TRAVIS_OS_NAME" == "windows" ]; then cmd.exe /c "call RefreshEnv.cmd"; fi
-  # Export PATH on OSX and Linux
-  # TODO: Do we need this part?
-  - if [ "$TRAVIS_OS_NAME" != "windows" ]; then export PATH="$(pwd)/build:${PATH}"; fi
-  # Install Ninja
-  - if [ "$TRAVIS_OS_NAME" == "windows" ]; then choco install ninja; fi
-  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew install ninja; fi
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt install ninja-build -y; fi
-  # Download Meson both systems
-  - git clone https://github.com/mesonbuild/meson
   
 # Build scripts
 # The same on all platforms
 script:
-  # Run meson
-  - if [ "$TRAVIS_OS_NAME" == "windows" ]; then py meson/meson.py builddir; fi
-  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then ./meson/meson.py builddir; fi
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then python3 meson/meson.py builddir; fi
-  # Run Ninja
-  - ninja -C builddir
-  - ls builddir
-
-test_script:
-  - ninja -C builddir test
+  - make -k
