@@ -24,10 +24,12 @@ matrix:
     - name: "Windows - CLANG"
       os: windows
       compiler: clang
+
+before_install:
+  - if [ "$TRAVIS_OS_NAME" == "windows" ]; then choco install make; fi
   
 # Build scripts
 # The same on all platforms
 script:
-  - if [ "$TRAVIS_OS_NAME" == "windows" ]; then mingw32-make -k && mingw32-make check; fi
-  - if [ "$TRAVIS_OS_NAME" != "windows" ]; then make -k && make check; fi
+  - make -k && make check
   - ls
