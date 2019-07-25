@@ -28,4 +28,5 @@ matrix:
 # Build scripts
 # The same on all platforms
 script:
+  - if [ "$TRAVIS_OS_NAME" == "windows" ]; then mingw32-make -k; fi
   - make -k
