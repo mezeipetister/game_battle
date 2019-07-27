@@ -1,12 +1,19 @@
-game 	: game.c
-					$(CC) -c $(CFLAGS) -o $@ $<
+SHELL := /bin/bash
 
-all: game
+objects = game.o test_a.o
 
-.PHONY	: clean
-clean		: -rm game.o
+all: game test_a
+.PHONY : all
 
-test_a	:	test_a.c
-				$(CC) -c $(CFLAGS) test_a.c -o test_a
+game: game
 
-check: test_a
+game.o :
+test_a.o :
+
+.PHONY : check
+check : all
+	./test_a
+
+.PHONY : clean
+clean :
+	rm game test_a $(objects)
